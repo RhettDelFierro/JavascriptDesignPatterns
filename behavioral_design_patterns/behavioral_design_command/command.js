@@ -20,8 +20,14 @@ class SaveCartCommand{
     }
     execute(){
         //use SQL and params to send to the DB
+        //transactions FTW!
+        //loggin,  all kinds of fun things!
         console.log(this.sql)
         console.log(this.params)
         console.log('Saved!')
     }
 }
+const cart = new ShoppingCart('Test')
+cart.addItem({type: 'socks'})
+const cmd = new SaveCartCommand(cart)
+cmd.execute()
